@@ -9,6 +9,7 @@ public class Vehicle {
 	String numPlate = "";
 	VehicleType type;
 	int speed;
+	boolean towed;
 	
 	public Vehicle(int id) {
 		this.id = id; 

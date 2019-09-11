@@ -17,9 +17,9 @@ public class Test {
 		while(true) {
 			Vehicle v = new Vehicle(vehicleCount++);
 			vbd.setVehicle(v);
-			vc.run(v);
+			vc.classify(v);
 			npr.run(v);
-			sd.run(v);
+			sd.detect(v);
 		}
 	}	
 }
