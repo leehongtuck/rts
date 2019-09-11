@@ -6,7 +6,6 @@ public class GpsNotifier {
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("Google Maps and Waze notified about the breakdown!");

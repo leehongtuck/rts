@@ -4,7 +4,6 @@ public class Test {
 	private static int vehicleCount = 1;
 	
 	public static void main(String[] args) throws InterruptedException {
-		System.out.println("testing");
 	
 		SpeedDetector sd = new SpeedDetector();
 		VehicleClassifier vc = new VehicleClassifier();
@@ -20,6 +19,7 @@ public class Test {
 			vc.classify(v);
 			npr.run(v);
 			sd.detect(v);
+			vbd.removeVehicle();
 		}
 	}	
 }
@@ -32,33 +32,26 @@ class VehicleBrokeDown implements Runnable {
 		// TODO Auto-generated method stub
 		while(true) {
 			if(v != null) {
-				if(Math.random() < 0.4) {
+				if(Math.random() < 0.1) {
 					v.speed = 0;
+					System.out.println("Vehicle " + v.id + " set to broke down");
 					v = null;
 					
-					try {
-						Thread.sleep(700);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			} else {
-				try {
-					wait();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}		
+				} 
+			}
+			try {
+				Thread.sleep(700);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
 	public void setVehicle(Vehicle v) {
 		this.v = v;
-		notify();
 	}
 	
-	public void removeVehicle(Vehicle v) {
+	public void removeVehicle() {
 		v = null;
 	}
 	
