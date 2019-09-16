@@ -6,11 +6,13 @@ import sequential.Vehicle;
 public class SpeedDetectorThread extends SpeedDetector implements Runnable {
 	Vehicle v;
 	
+	public SpeedDetectorThread(Vehicle v) {
+		this.v = v;
+	}
+	
 	@Override
 	public void run() {
-		while(true) {
-			super.detect(v);
-		}
+		super.detect(v);
 	}
 	
 }

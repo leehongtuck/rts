@@ -1,7 +1,7 @@
 package sequential;
 
 public class NumberPlateReader {
-	public void run(Vehicle v) {
+	public void read(Vehicle v) {
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
