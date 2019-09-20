@@ -1,4 +1,4 @@
-package sequential;
+package shared;
 
 public enum VehicleType {
 	MOTORBIKE, 
