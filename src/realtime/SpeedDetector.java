@@ -1,7 +1,5 @@
 package realtime;
 
-import java.util.Date;
-
 import javax.realtime.AsynchronouslyInterruptedException;
 import javax.realtime.Interruptible;
 import javax.realtime.RealtimeThread;
@@ -23,12 +21,13 @@ public class SpeedDetector extends RealtimeThread{
 	@Override
 	public void run() {
 		while(true) {
-			if(!accident)
+			if(!accident) {
+				System.out.println("accidnet not happening");
 				aie.doInterruptible(detect);
+			}
 			else {
 				aie.doInterruptible(response);
 			}
-		
 			try {
 				waitForNextRelease();
 			} catch (IllegalThreadStateException | InterruptedException e) {
@@ -52,6 +51,9 @@ public class SpeedDetector extends RealtimeThread{
 			// TODO Auto-generated method stub
 			if(prev != Main.vehicle) {
 				v = Main.vehicle;
+				if(v.speed == 0) {
+					aie.fire();
+				}
 				System.out.println("Vehicle " + v.id + " is moving at a speed of " + v.speed + "km/h" );
 				prev = v;
 			}	
@@ -74,6 +76,7 @@ public class SpeedDetector extends RealtimeThread{
 			System.out.println("Vehicle " + v.id + " , a " + v.type + " has broken down!");
 			new Thread(new AuthoritiesNotifier(v)).start();;
 			new Thread(new GpsNotifier(v)).start();
+			aie.fire();
 		}
 		
 	}

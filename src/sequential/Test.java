@@ -17,7 +17,7 @@ public class Test {
 		thrVbd.start();
 		
 		while(true) {
-			concurrent.Test.difference = new Date().getTime();
+			concurrent.Main.difference = new Date().getTime();
 			Vehicle v = new Vehicle(vehicleCount++);
 			vbd.setVehicle(v);
 			vc.classify(v);

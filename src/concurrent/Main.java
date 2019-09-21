@@ -2,11 +2,9 @@ package concurrent;
 
 import java.util.Date;
 
-import sequential.Vehicle;
-import sequential.VehicleBreakdown;
-
-public class Test {
-	public static long difference; 
+public class Main {
+	public static long difference;
+	static volatile Vehicle vehicle;
 	
 	public static void main(String[] args) throws InterruptedException {
 		int vehicleCount = 1;
@@ -20,9 +18,9 @@ public class Test {
 			difference = new Date().getTime();
 			Vehicle v = new Vehicle(vehicleCount++);
 			vbd.setVehicle(v);
-			t1 = new Thread(new VehicleClassifierThread(v));
-			t2 = new Thread(new NumberPlateReaderThread(v));
-			t3 = new Thread(new SpeedDetectorThread(v));
+			t1 = new Thread(new VehicleClassifier());
+			t2 = new Thread(new NumberPlateReader());
+			t3 = new Thread(new SpeedDetector());
 			t1.start();
 			t2.start();
 			t3.start();

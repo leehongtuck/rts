@@ -22,9 +22,10 @@ public class Main {
 		RealtimeThread vg = new VehicleGenerator(aie);
 		vg.setReleaseParameters(vgRel);
 		
-		vg.start();
 		npr.start();
 		sd.start();
 		vc.start();
+		
+		vg.start();
 	}
 }

@@ -1,15 +1,8 @@
-package realtime;
-
-import javax.realtime.AsynchronouslyInterruptedException;
+package concurrent;
 
 public class VehicleBreakdown implements Runnable {
 	Vehicle v; 
-	AsynchronouslyInterruptedException aie;
-	
-	public VehicleBreakdown(AsynchronouslyInterruptedException aie) {
-		this.aie = aie;
-	}
-	
+
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -17,9 +10,7 @@ public class VehicleBreakdown implements Runnable {
 			if(v != null) {
 				if(Math.random() < 0.4) {
 					v.speed = 0;
-					System.out.println("fire away!");
-					aie.fire();
-					v = null;	
+					v = null;
 				} 
 			} else {
 				synchronized(this) {

@@ -1,8 +1,6 @@
-package realtime;
+package concurrent;
 
-import javax.realtime.RealtimeThread;
-
-public class NumberPlateReader extends RealtimeThread {
+public class NumberPlateReader implements Runnable{
 	Vehicle prev;
 	
 	public void read(Vehicle v) {
@@ -14,14 +12,14 @@ public class NumberPlateReader extends RealtimeThread {
 	@Override
 	public void run() {
 		while(true) {
-			if(prev != Main.vehicle)
-				read(Main.vehicle);
 			try {
-				waitForNextRelease();
-			} catch (IllegalThreadStateException | InterruptedException e) {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			if(prev != Main.vehicle)
+				read(Main.vehicle);
 		}
 		
 	}
