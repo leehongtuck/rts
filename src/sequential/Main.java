@@ -1,10 +1,6 @@
 package sequential;
 
-import java.util.Date;
-
-public class Test {
-
-	
+public class Main {
 	public static void main(String[] args) throws InterruptedException {
 		int vehicleCount = 1;
 		
@@ -17,7 +13,6 @@ public class Test {
 		thrVbd.start();
 		
 		while(true) {
-			concurrent.Main.difference = new Date().getTime();
 			Vehicle v = new Vehicle(vehicleCount++);
 			vbd.setVehicle(v);
 			vc.classify(v);

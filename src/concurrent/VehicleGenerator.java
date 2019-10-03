@@ -15,7 +15,7 @@ public class VehicleGenerator implements Runnable{
 			Main.vehicle = new Vehicle(count++);
 			vb.setVehicle(Main.vehicle);
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(2500);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

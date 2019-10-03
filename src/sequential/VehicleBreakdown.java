@@ -21,7 +21,6 @@ public class VehicleBreakdown implements Runnable {
 			} else {
 				synchronized(this) {
 					try {
-						System.out.println("waiting");
 						wait();
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block

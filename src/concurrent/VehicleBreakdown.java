@@ -8,19 +8,19 @@ public class VehicleBreakdown implements Runnable {
 		// TODO Auto-generated method stub
 		while(true) {
 			if(v != null) {
-				if(Math.random() < 0.4) {
+				if(Math.random() < 0.2) {
 					v.speed = 0;
-					v = null;
 				} 
-			} else {
-				synchronized(this) {
-					try {
-						wait();
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}	
-				}
+				v = null;
+			} 
+			
+			synchronized(this) {
+				try {
+					wait();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
 			}
 			
 		}

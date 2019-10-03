@@ -7,7 +7,7 @@ public class SpeedDetector implements Runnable {
 		System.out.println("Vehicle " + v.id + " is moving at a speed of " + v.speed + "km/h" );
 		prev = v;
 		if(v.speed == 0) {
-			System.out.println("Vehicle " + v.id + " , a " + v.type + " has broken down!");
+			System.out.println("Vehicle " + v.id + " has broken down!");
 			new Thread(new AuthoritiesNotifier(v)).start();;
 			new Thread(new GpsNotifier(v)).start();
 		}
