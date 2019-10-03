@@ -1,14 +1,14 @@
 package realtime;
 
-import javax.realtime.AsynchronouslyInterruptedException;
+import javax.realtime.AsyncEvent;
 import javax.realtime.RealtimeThread;
 
 public class VehicleGenerator extends RealtimeThread{
 	int count = 1;
 	VehicleBreakdown vb;
 	
-	public VehicleGenerator(AsynchronouslyInterruptedException aie) {
-		vb = new VehicleBreakdown(aie);
+	public VehicleGenerator(AsyncEvent event, AccidentResponse handler) {
+		vb = new VehicleBreakdown(event, handler);
 		new Thread(vb).start();
 	}
 	@Override

@@ -1,13 +1,15 @@
 package realtime;
 
-import javax.realtime.AsynchronouslyInterruptedException;
+import javax.realtime.AsyncEvent;
 
 public class VehicleBreakdown implements Runnable {
 	Vehicle v; 
-	AsynchronouslyInterruptedException aie;
+	AsyncEvent event;
+	AccidentResponse handler;
 	
-	public VehicleBreakdown(AsynchronouslyInterruptedException aie) {
-		this.aie = aie;
+	public VehicleBreakdown(AsyncEvent event, AccidentResponse handler) {
+		this.event = event;
+		this.handler = handler;
 	}
 	
 	@Override
@@ -15,10 +17,11 @@ public class VehicleBreakdown implements Runnable {
 		// TODO Auto-generated method stub
 		while(true) {
 			if(v != null) {
-				if(Math.random() < 0.4) {
+				if(Math.random() < 0.01) {
 					v.speed = 0;
 					System.out.println("fire away!");
-					aie.fire();
+					handler.setVehicle(v);
+					event.fire();
 					v = null;	
 				} 
 			} else {
@@ -44,10 +47,5 @@ public class VehicleBreakdown implements Runnable {
 			}
 		}
 	}
-	
-	public void removeVehicle() {
-		v = null;
-	}
-
 }
 
